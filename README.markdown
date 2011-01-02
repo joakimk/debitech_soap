@@ -45,5 +45,5 @@ See the java client docs in the DIBSServerManual.pdf available from the DIBS Man
 Known issues
 ----
 
-- Does not work with Ruby 1.9 (does not have "soap/wsdlDriver"). I have no been able to get "savon" work.
+- Does not work with Ruby 1.9 (does not have "soap/wsdlDriver"). We have not been able to get "savon" to work.
 
