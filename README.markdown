@@ -13,10 +13,12 @@ Installing
 Usage
 ----
  
-    # This is how you would have used the DebiTech Java API:
+This is how you would have used the DebiTech Java API:
+
     # veserver = VEServer.get_instance("https://secure.incab.se/verify/server/merchant_name")
 
-    # This is how you use DebitechSoap:
+This is how you use DebitechSoap:
+
     veserver = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
 
 Custom methods
