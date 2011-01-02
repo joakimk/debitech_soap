@@ -5,6 +5,21 @@ module DebitechSoap
 
     RETURN_DATA = %w{aCSUrl acquirerAddress acquirerAuthCode acquirerAuthResponseCode acquirerCity acquirerConsumerLimit acquirerErrorDescription acquirerFirstName acquirerLastName acquirerMerchantLimit acquirerZipCode amount errorMsg infoCode infoDescription pAReqMsg resultCode resultText verifyID}
 
+    PARAMS = { "settle"                => ["verifyID", "transID", "amount", "extra"],
+               "subscribe_and_settle"  => ["verifyID", "transID", "data", "ip", "extra"],
+               "authorize"             => ["billingFirstName", "billingLastName", "billingAddress", "billingCity",
+                                           "billingCountry", "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID", "extra"],
+               "authorizeAndSettle3DS" => ["verifyID", "paRes", "extra"],
+               "refund"                => ["verifyID", "transID", "amount", "extra"],
+               "askIf3DSEnrolled"      => ["billingFirstName", "billingLastName", "billingAddress", "billingCity",
+                                           "billingCountry", "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID",
+                                           "httpAcceptHeader", "httpUserAgentHeader", "method", "referenceNo", "extra"],
+               "auth_reversal"         => ["verifyID", "amount", "transID", "extra"],
+               "authorize3DS"          => ["verifyID", "paRes", "extra"],
+               "subscribe"             => ["verifyID", "transID", "data", "ip", "extra"],
+               "authorize_and_settle"  => ["billingFirstName", "billingLastName", "billingAddress", "billingCity", "billingCountry",
+                                           "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID", "extra"] }
+
     def initialize(opts = {})
       @api_credentials = opts
       disable_stderr do
