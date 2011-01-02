@@ -1,0 +1,7 @@
+pkg
+todo.txt
+*/*.swp
+*.swp
+*/**/.*.swp
+*/**/*.swp
+*/*/*/*.swp
