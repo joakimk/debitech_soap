@@ -19,8 +19,14 @@ Usage
     # This is how you use DebitechSoap:
     veserver = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
 
-API docs
+Custom methods
 ----
 
-See the java client docs in the DebiTech Server Manual.
+    # Call to "checkSwedishPersNo" to make sure the credentials work
+    veserver.credentials_ok? 
+
+API
+----
+
+See the java client docs in the DIBSServerManual.pdf available from the DIBS Manager.
 
