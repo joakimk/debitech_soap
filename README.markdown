@@ -15,6 +15,7 @@ Usage
  
 This is how you would have used the DebiTech Java API:
 
+    # include_class "com.verifyeasy.server.VEServer"
     # veserver = VEServer.get_instance("https://secure.incab.se/verify/server/merchant_name")
 
 This is how you use DebitechSoap:
