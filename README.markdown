@@ -30,8 +30,20 @@ Returns true if the credentials work (calls "checkSwedishPersNo").
 
     veserver.valid_credentials?
 
+Return data
+----
+
+- Return data can be accessed in a few different ways:
+
+    "infoCode" can also be "getInfoCode" or "get_info_code"
+
 API
 ----
 
 See the java client docs in the DIBSServerManual.pdf available from the DIBS Manager.
+
+Known issues
+----
+
+- Does not work with Ruby 1.9 (does not have "soap/wsdlDriver"). I have no been able to get "savon" work.
 
