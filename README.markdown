@@ -28,7 +28,7 @@ Custom methods
 
 Returns true if the credentials work (calls "checkSwedishPersNo").
 
-    veserver.credentials_valid? 
+    veserver.valid_credentials?
 
 API
 ----

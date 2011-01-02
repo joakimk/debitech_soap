@@ -12,7 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = %q{A pure ruby way to make payments with DebiTech}
   s.description = %q{An implementation of the DebiTech Java API using pure ruby and the SOAP API.}
 
-  s.rubyforge_project = "debitech_soap"
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'autotest'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
