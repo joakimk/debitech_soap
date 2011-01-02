@@ -1,6 +1,4 @@
-This is work in progress and not usable yet.
-
-http://tom.preston-werner.com/2010/08/23/readme-driven-development.html :D
+This is work in progress and not usable yet. [Readme Driven Development|http://tom.preston-werner.com/2010/08/23/readme-driven-development.html]... 
 
 WIP docs below
 ----
