@@ -22,7 +22,8 @@ Usage
 Custom methods
 ----
 
-    # Call to "checkSwedishPersNo" to make sure the credentials work
+Returns true if the credentials work (calls "checkSwedishPersNo").
+
     veserver.credentials_ok? 
 
 API
