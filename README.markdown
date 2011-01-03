@@ -23,17 +23,28 @@ This is how you use DebitechSoap:
     require 'debitech_soap'
     veserver = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
 
+Supported arguments
+----
+
+Java style:
+
+    veserver.refund(1234567, 23456, 100, "extra")
+
+Hash:
+
+    veserver.refund(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra")
+
 Custom methods
 ----
 
-Returns true if the credentials work (calls "checkSwedishPersNo").
+Returns **true** if the credentials work (calls "checkSwedishPersNo").
 
     veserver.valid_credentials?
 
 Return data
 ----
 
-- Return data can be accessed in a few different ways:
+Return data can be accessed in a few different ways:
 
     "infoCode" can also be "getInfoCode" or "get_info_code"
 
