@@ -1,4 +1,13 @@
 require 'soap/wsdlDriver'
+require 'ostruct'
+require 'rubygems'
+require 'active_support'
+
+begin
+  # Required for active_support 3+
+  require 'active_support/core_ext/string/inflections'
+rescue LoadError
+end
 
 module DebitechSoap
   class API
@@ -22,9 +31,12 @@ module DebitechSoap
 
     def initialize(opts = {})
       @api_credentials = opts
+      
       disable_stderr do
         @client = SOAP::WSDLDriverFactory.new('https://secure.incab.se/axis2/services/DTServerModuleService_v1?wsdl').create_rpc_driver
       end
+
+      define_jruby_wrapper_methods!  
     end
 
     def valid_credentials?
@@ -34,6 +46,42 @@ module DebitechSoap
     end
 
   private
+
+    def define_jruby_wrapper_methods!
+      PARAMS.keys.each { |method|
+        (class << self; self; end).class_eval do                          # Doc:
+          define_method(method) do |*args|                                # def refund(*args)
+            attributes = @api_credentials
+            parameter_order = PARAMS[method.to_s]                           # parameter_order = ["verifyID", "transID", "amount", "extra"]
+            args.each_with_index { |argument, i|
+              attributes[parameter_order[i].to_sym] = argument
+            }
+
+            return_data @client.send(method, attributes).return
+          end                                                             # end
+        end
+      }
+    end
+
+    def return_data(results)
+      hash = {}
+      
+      RETURN_DATA.each { |attribute|
+        result = results.send(attribute)
+        unless result.is_a?(SOAP::Mapping::Object)
+          result = result.to_i if integer?(result)
+          hash[attribute] = result
+          hash["get_" + attribute.underscore] = result
+          hash["get" + attribute.camelcase] = result
+        end
+      }
+      
+      OpenStruct.new(hash)
+    end
+
+    def integer?(result)
+      result.to_i != 0 || result == "0"
+    end
 
     def disable_stderr
       begin
