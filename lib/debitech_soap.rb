@@ -36,7 +36,7 @@ module DebitechSoap
         @client = SOAP::WSDLDriverFactory.new('https://secure.incab.se/axis2/services/DTServerModuleService_v1?wsdl').create_rpc_driver
       end
 
-      define_jruby_wrapper_methods!  
+      define_java_wrapper_methods!  
     end
 
     def valid_credentials?
@@ -47,7 +47,7 @@ module DebitechSoap
 
   private
 
-    def define_jruby_wrapper_methods!
+    def define_java_wrapper_methods!
       PARAMS.keys.each { |method|
         (class << self; self; end).class_eval do                          # Doc:
           define_method(method) do |*args|                                # def refund(*args)
