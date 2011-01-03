@@ -6,7 +6,7 @@ This is **work in progress and not usable yet**. [Readme Driven Development](htt
 WIP docs below
 ----
 
-This is a wrapper of the DebiTech SOAP API that is API compatible with the DebiTech Java client (but runs on MRI). 
+This is a wrapper of the DebiTech SOAP API. It's intended to be API compatible with the DebiTech Java client but also suppports a more developer friendly syntax.
 
 Installing
 ----
@@ -18,8 +18,8 @@ Usage
  
 This is how you would have used the DebiTech Java API:
 
-    # include_class "com.verifyeasy.server.VEServer"
-    # veserver = VEServer.get_instance("https://secure.incab.se/verify/server/merchant_name")
+    include_class "com.verifyeasy.server.VEServer"
+    veserver = VEServer.get_instance("https://secure.incab.se/verify/server/merchant_name")
 
 This is how you use DebitechSoap:
 
@@ -29,7 +29,7 @@ This is how you use DebitechSoap:
 Supported arguments
 ----
 
-Java style:
+Java style (see DebitechSoap::API::PARAMS.keys in lib/debitech_soap.rb):
 
     veserver.refund(1234567, 23456, 100, "extra")
 
@@ -45,12 +45,9 @@ Custom methods
 Return data
 ----
 
-Return data can be accessed in a few different ways: "infoCode" can also be "getInfoCode" or "get_info_code".
-
-Methods that have mappings for java-style method calls
-----
-
-See DebitechSoap::API::PARAMS.keys (in lib/debitech_soap.rb).
+- An object with methods for each attribute (See DebitechSoap::RETURN_DATA).
+- Each attribute has serveral methods, for example "infoCode" can also be "getInfoCode" or "get_info_code".
+- If the return value is a number it will be converted to an integer.
 
 API docs
 ----
