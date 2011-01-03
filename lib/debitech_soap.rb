@@ -52,10 +52,15 @@ module DebitechSoap
         (class << self; self; end).class_eval do                          # Doc:
           define_method(method) do |*args|                                # def refund(*args)
             attributes = @api_credentials
-            parameter_order = PARAMS[method.to_s]                           # parameter_order = ["verifyID", "transID", "amount", "extra"]
-            args.each_with_index { |argument, i|
-              attributes[parameter_order[i].to_sym] = argument
-            }
+
+            if args.first.is_a?(Hash) 
+              attributes.merge!(args.first)
+            else
+              parameter_order = PARAMS[method.to_s] 
+              args.each_with_index { |argument, i|
+                attributes[parameter_order[i].to_sym] = argument
+              }
+            end
 
             return_data @client.send(method, attributes).return
           end                                                             # end

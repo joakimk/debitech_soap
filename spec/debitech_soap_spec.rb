@@ -1,5 +1,17 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/debitech_soap'))
 
+class MockSoapResult
+  class MockReturn
+    def method_missing(*opts)
+      SOAP::Mapping::Object.new
+    end
+  end
+
+  def return
+    @return ||= MockReturn.new
+  end
+end
+
 describe DebitechSoap::API, "valid_credentials?" do
   
   before do
@@ -22,18 +34,6 @@ describe DebitechSoap::API, "valid_credentials?" do
     api.valid_credentials?.should == false
   end
 
-end
-
-class MockSoapResult
-  class MockReturn
-    def method_missing(*opts)
-      SOAP::Mapping::Object.new
-    end
-  end
-
-  def return
-    @return ||= MockReturn.new
-  end
 end
 
 describe DebitechSoap::API, "calling a method with java-style arguments" do
@@ -97,3 +97,29 @@ describe DebitechSoap::API, "calling a method with java-style arguments" do
   end
 
 end
+
+describe DebitechSoap::API, "calling a method with hash-style arguments" do
+
+  before do
+    @client = mock(Object)
+    SOAP::WSDLDriverFactory.stub!(:new).and_return(mock(Object, :create_rpc_driver => @client))
+  end
+
+  it "should call the corresponding soap method" do
+    api = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
+    @client.should_receive("refund").with(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra",
+                                          :shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password").
+                                          and_return(MockSoapResult.new)
+    api.refund(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra")
+  end
+
+  it "should return data" do
+    api = DebitechSoap::API.new
+    mock_soap_result = MockSoapResult.new
+    mock_soap_result.return.stub!(:resultText).and_return("success")
+    @client.stub!("refund").and_return(mock_soap_result)
+    api.refund(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra").getResultText.should == "success"
+  end
+
+end
+
