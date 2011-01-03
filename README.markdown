@@ -1,3 +1,6 @@
+Work in progress!
+----
+
 This is **work in progress and not usable yet**. [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html)... 
 
 WIP docs below
@@ -42,14 +45,17 @@ Custom methods
 Return data
 ----
 
-Return data can be accessed in a few different ways:
+Return data can be accessed in a few different ways: "infoCode" can also be "getInfoCode" or "get_info_code".
 
-    "infoCode" can also be "getInfoCode" or "get_info_code"
-
-API
+Methods that have mappings for java-style method calls
 ----
 
-See the java client docs in the DIBSServerManual.pdf available from the DIBS Manager.
+See DebitechSoap::API::PARAMS.keys (in lib/debitech_soap.rb).
+
+API docs
+----
+
+Get DIBSServerManual.pdf from the DIBS Manager.
 
 Known issues
 ----
