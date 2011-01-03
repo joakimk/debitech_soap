@@ -6,7 +6,7 @@ This is **work in progress and not usable yet**. [Readme Driven Development](htt
 WIP docs below
 ----
 
-This is a wrapper of the DebiTech SOAP API. It's intended to be API compatible with the DebiTech Java client but also suppports a more developer friendly syntax.
+This is a wrapper of the DebiTech SOAP API. It's intended to be API compatible with the DebiTech Java client but also supports a more developer friendly syntax :).
 
 Installing
 ----
