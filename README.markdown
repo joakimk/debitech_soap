@@ -37,9 +37,7 @@ Hash:
 Custom methods
 ----
 
-Returns **true** if the credentials work (calls "checkSwedishPersNo").
-
-    veserver.valid_credentials?
+**valid_credentials?**: Returns **true** if the credentials work (calls "checkSwedishPersNo").
 
 Return data
 ----
