@@ -50,6 +50,19 @@ describe DebitechSoap::API, "calling a method with java-style arguments" do
                                           and_return(MockSoapResult.new)
     api.refund(1234567, 23456, 100, "extra")
   end
+  
+  it "should not keep old attributes when making subsequent api calls" do
+    api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
+    @client.should_receive("refund").with(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra",
+                                          :shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password").
+                                          and_return(MockSoapResult.new)
+    @client.should_receive("authorize3DS").with(:verifyID => 1234567, :paRes => "RES", :extra => "extra",
+                                          :shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password").
+                                          and_return(MockSoapResult.new)
+                                          
+    api.refund(1234567, 23456, 100, "extra")
+    api.authorize3DS(1234567, "RES", "extra")
+  end
 
   it "should create a return object" do
     api = DebitechSoap::API.new
@@ -66,7 +79,7 @@ describe DebitechSoap::API, "calling a method with java-style arguments" do
     api.refund(1234567, 23456, 100, "extra").resultCode.should be_nil
   end
 
-  it "should be able to access the data using getCamelCase and get_underscore methods" do
+  it "should be able to access the data using getCamelCase, get_underscore and underscore methods" do
     api = DebitechSoap::API.new
     mock_soap_result = MockSoapResult.new
     mock_soap_result.return.stub!(:resultText).and_return("success")
@@ -74,6 +87,7 @@ describe DebitechSoap::API, "calling a method with java-style arguments" do
     result = api.refund(1234567, 23456, 100, "extra")
     result.getResultText.should == "success"
     result.get_result_text.should == "success"
+    result.result_text.should == 'success'
   end
 
   it "should convert the result to an integer when its a number" do

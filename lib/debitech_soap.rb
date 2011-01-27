@@ -54,7 +54,7 @@ module DebitechSoap
       PARAMS.keys.each { |method|
         (class << self; self; end).class_eval do                          # Doc:
           define_method(method) do |*args|                                # def refund(*args)
-            attributes = @api_credentials
+            attributes = @api_credentials.clone
 
             if args.first.is_a?(Hash) 
               attributes.merge!(args.first)
@@ -73,7 +73,7 @@ module DebitechSoap
 
     def return_data(results)
       hash = {}
-      
+
       RETURN_DATA.each { |attribute|
         result = results.send(attribute)
         unless result.is_a?(SOAP::Mapping::Object)
@@ -81,9 +81,10 @@ module DebitechSoap
           hash[attribute] = result
           hash["get_" + attribute.underscore] = result
           hash["get" + attribute.camelcase] = result
+          hash[attribute.underscore] = result
         end
       }
-      
+
       OpenStruct.new(hash)
     end
 
