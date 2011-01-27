@@ -1,11 +1,3 @@
-Work in progress!
-----
-
-This is **work in progress and not usable yet**. [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html)... 
-
-WIP docs below
-----
-
 This is a wrapper of the DebiTech SOAP API. It's intended to be API compatible with the DebiTech Java client but also supports a more developer friendly syntax :).
 
 Installing
@@ -48,6 +40,12 @@ Return data
 - An object with methods for each attribute (See DebitechSoap::RETURN_DATA).
 - Each attribute has serveral methods, for example "infoCode" can also be "getInfoCode" or "get_info_code".
 - If the return value is a number it will be converted to an integer.
+
+Gotchas
+----
+
+- We have only used the following methods in production: askIf3DSEnrolled, authorize3DS, authorizeAndSettle, checkSwedishPersNo.
+- The other methods should work, but have not been tested.
 
 API docs
 ----
