@@ -27,8 +27,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
   autotest
   debitech_soap!
-  i18n
   rspec

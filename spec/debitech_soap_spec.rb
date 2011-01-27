@@ -24,13 +24,13 @@ describe DebitechSoap::API, "valid_credentials?" do
                                                      :password => "api_user_password", :persNo => "555555-5555").
                                                      and_return(mock(Object, :return => "true"))
 
-    api = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
+    api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
     api.valid_credentials?.should == true
   end
 
   it "should return false if the service returns false" do
     @client.stub!(:checkSwedishPersNo).and_return(mock(Object, :return => "false"))
-    api = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
+    api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
     api.valid_credentials?.should == false
   end
 
@@ -44,7 +44,7 @@ describe DebitechSoap::API, "calling a method with java-style arguments" do
   end
   
   it "should map the arguments to a hash and call the corresponding SOAP method" do
-    api = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
+    api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
     @client.should_receive("refund").with(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra",
                                           :shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password").
                                           and_return(MockSoapResult.new)
@@ -106,7 +106,7 @@ describe DebitechSoap::API, "calling a method with hash-style arguments" do
   end
 
   it "should call the corresponding soap method" do
-    api = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
+    api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
     @client.should_receive("refund").with(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra",
                                           :shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password").
                                           and_return(MockSoapResult.new)

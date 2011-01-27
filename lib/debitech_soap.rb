@@ -30,7 +30,10 @@ module DebitechSoap
                                            "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID", "extra"] }
 
     def initialize(opts = {})
-      @api_credentials = opts
+      @api_credentials = {}
+      @api_credentials[:shopName] = opts[:merchant]
+      @api_credentials[:userName] = opts[:username]
+      @api_credentials[:password] = opts[:password]
       
       disable_stderr do
         @client = SOAP::WSDLDriverFactory.new('https://secure.incab.se/axis2/services/DTServerModuleService_v1?wsdl').create_rpc_driver

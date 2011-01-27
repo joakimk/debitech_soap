@@ -24,7 +24,7 @@ This is how you would have used the DebiTech Java API:
 This is how you use DebitechSoap:
 
     require 'debitech_soap'
-    veserver = DebitechSoap::API.new(:shopName => "merchant_name", :userName => "api_user_name", :password => "api_user_password")
+    veserver = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
 
 Supported arguments
 ----
