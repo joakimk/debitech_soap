@@ -1,3 +1,7 @@
+0.0.3
+
+Added support for Java style method names.
+
 0.0.2
 
 Removed activesupport dependency.

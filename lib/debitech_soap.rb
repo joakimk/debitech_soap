@@ -8,20 +8,24 @@ module DebitechSoap
 
     RETURN_DATA = %w{aCSUrl acquirerAddress acquirerAuthCode acquirerAuthResponseCode acquirerCity acquirerConsumerLimit acquirerErrorDescription acquirerFirstName acquirerLastName acquirerMerchantLimit acquirerZipCode amount errorMsg infoCode infoDescription pAReqMsg resultCode resultText verifyID}
 
-    PARAMS = { "settle"                => ["verifyID", "transID", "amount", "extra"],
-               "subscribe_and_settle"  => ["verifyID", "transID", "data", "ip", "extra"],
-               "authorize"             => ["billingFirstName", "billingLastName", "billingAddress", "billingCity",
-                                           "billingCountry", "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID", "extra"],
-               "authorizeAndSettle3DS" => ["verifyID", "paRes", "extra"],
-               "refund"                => ["verifyID", "transID", "amount", "extra"],
-               "askIf3DSEnrolled"      => ["billingFirstName", "billingLastName", "billingAddress", "billingCity",
-                                           "billingCountry", "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID",
-                                           "httpAcceptHeader", "httpUserAgentHeader", "method", "referenceNo", "extra"],
-               "auth_reversal"         => ["verifyID", "amount", "transID", "extra"],
-               "authorize3DS"          => ["verifyID", "paRes", "extra"],
-               "subscribe"             => ["verifyID", "transID", "data", "ip", "extra"],
-               "authorize_and_settle"  => ["billingFirstName", "billingLastName", "billingAddress", "billingCity", "billingCountry",
-                                           "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID", "extra"] }
+    PARAMS = { %w(settle)                     => ["verifyID", "transID", "amount", "extra"],
+               %w(subscribeAndSettle subscribe_and_settle) \
+                                              => ["verifyID", "transID", "data", "ip", "extra"],
+               %w(authorize)                  => ["billingFirstName", "billingLastName", "billingAddress", "billingCity",
+                                                  "billingCountry", "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID", "extra"],
+               %w(authorizeAndSettle3DS authorize_and_settle_3ds) \
+                                              => ["verifyID", "paRes", "extra"],
+               %w(refund)                     => ["verifyID", "transID", "amount", "extra"],
+               %w(askIf3DSEnrolled ask_if_3ds_enrolled) \
+                                              => ["billingFirstName", "billingLastName", "billingAddress", "billingCity",
+                                                  "billingCountry", "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID",
+                                                  "httpAcceptHeader", "httpUserAgentHeader", "method", "referenceNo", "extra"],
+               %w(authReversal auth_reversal) => ["verifyID", "amount", "transID", "extra"],
+               %w(authorize3DS authorize_3ds) => ["verifyID", "paRes", "extra"],
+               %w(subscribe)                  => ["verifyID", "transID", "data", "ip", "extra"],
+               %w(authorizeAndSettle authorize_and_settle) \
+                                              => ["billingFirstName", "billingLastName", "billingAddress", "billingCity", "billingCountry",
+                                                  "cc", "expM", "expY", "eMail", "ip", "data", "currency", "transID", "extra"] }
 
     def initialize(opts = {})
       @api_credentials = {}
@@ -45,7 +49,7 @@ module DebitechSoap
   private
 
     def define_java_wrapper_methods!
-      PARAMS.keys.each { |method|
+      PARAMS.keys.flatten.each { |method|
         (class << self; self; end).class_eval do                          # Doc:
           define_method(method) do |*args|                                # def refund(*args)
             attributes = @api_credentials.clone
@@ -53,13 +57,13 @@ module DebitechSoap
             if args.first.is_a?(Hash) 
               attributes.merge!(args.first)
             else
-              parameter_order = PARAMS[method.to_s] 
+              parameter_order = api_signature(method).last
               args.each_with_index { |argument, i|
                 attributes[parameter_order[i].to_sym] = argument
               }
             end
 
-            return_data @client.send(method, attributes).return
+            return_data @client.send(api_signature(method).first.first, attributes).return
           end                                                             # end
         end
       }
@@ -93,6 +97,10 @@ module DebitechSoap
       ensure
         $stderr = STDERR
       end
+    end
+
+    def api_signature(method)
+      PARAMS.find {|key,value| key.include?(method.to_s) }
     end
 
   end

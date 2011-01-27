@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    debitech_soap (0.0.1)
+    debitech_soap (0.0.2)
 
 GEM
   remote: http://rubygems.org/
