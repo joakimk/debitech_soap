@@ -1,13 +1,7 @@
 require 'soap/wsdlDriver'
 require 'ostruct'
 require 'rubygems'
-require 'active_support'
-
-begin
-  # Required for active_support 3+
-  require 'active_support/core_ext/string/inflections'
-rescue LoadError
-end
+require 'debitech_soap/string_extensions'
 
 module DebitechSoap
   class API
@@ -34,12 +28,12 @@ module DebitechSoap
       @api_credentials[:shopName] = opts[:merchant]
       @api_credentials[:userName] = opts[:username]
       @api_credentials[:password] = opts[:password]
-      
+
       disable_stderr do
         @client = SOAP::WSDLDriverFactory.new('https://secure.incab.se/axis2/services/DTServerModuleService_v1?wsdl').create_rpc_driver
       end
 
-      define_java_wrapper_methods!  
+      define_java_wrapper_methods!
     end
 
     def valid_credentials?
