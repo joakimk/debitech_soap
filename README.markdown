@@ -44,7 +44,7 @@ Return data
 Gotchas
 ----
 
-- We have only used the following methods in production: askIf3DSEnrolled, authorize3DS, authorizeAndSettle, checkSwedishPersNo.
+- We have only used the following methods in production: askIf3DSEnrolled, authorize3DS, subscribeAndSettle, checkSwedishPersNo.
 - The other methods should work, but have not been tested.
 
 API docs
