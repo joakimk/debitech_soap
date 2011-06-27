@@ -52,6 +52,12 @@ API docs
 
 Get DIBSServerManual.pdf from the DIBS Manager.
 
+CI
+----
+
+- DebitechSoap is continuously tested for compability with Ruby 1.8.7 and JRuby 1.6.2.
+
+
 Known issues
 ----
 
