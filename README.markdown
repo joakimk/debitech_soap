@@ -46,7 +46,6 @@ Gotchas
 
 - We have only used the following methods in production: askIf3DSEnrolled, authorize3DS, authorize, subscribeAndSettle, checkSwedishPersNo, authorizeAndSettle.
 - The other methods should work, but have not been tested.
-- It does not handle timeouts as-is.
 
 API docs
 ----
