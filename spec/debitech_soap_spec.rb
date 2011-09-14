@@ -145,3 +145,19 @@ describe DebitechSoap::API, "calling a method with hash-style arguments" do
 
 end
 
+describe DebitechSoap::API, "handling exceptions" do
+
+  before do
+    @client = mock(Object)
+    SOAP::WSDLDriverFactory.stub!(:new).and_return(mock(Object, :create_rpc_driver => @client))
+  end
+
+  it "should catch Timeout::Error and return 403" do
+    api = DebitechSoap::API.new
+    @client.stub!("refund").and_raise(Timeout::Error)
+    result = api.refund(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra")
+    result.getResultCode.should == 403
+    result.getResultText.should == "SOAP Timeout"
+  end
+  
+end
