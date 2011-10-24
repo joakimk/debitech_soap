@@ -12,6 +12,14 @@ class MockSoapResult
   end
 end
 
+class MockSoapResultRuby19
+  class MockReturn < MockSoapResult::MockReturn; end
+
+  def m_return
+    @return ||= MockReturn.new
+  end
+end
+
 describe DebitechSoap::API, "valid_credentials?" do
   
   before do
@@ -32,6 +40,12 @@ describe DebitechSoap::API, "valid_credentials?" do
     @client.stub!(:checkSwedishPersNo).and_return(mock(Object, :return => "false"))
     api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
     api.valid_credentials?.should == false
+  end
+
+  it "should work with Ruby 1.9 SOAP API" do
+    @client.stub!(:checkSwedishPersNo).and_return(mock(Object, :m_return => "true"))
+    api = DebitechSoap::API.new
+    api.valid_credentials?.should == true
   end
 
 end
@@ -118,6 +132,15 @@ describe DebitechSoap::API, "calling a method with java-style arguments" do
     result.resultCode.should == 0
   end
 
+  it "should work with Ruby 1.9 SOAP API" do
+    api = DebitechSoap::API.new
+    mock_soap_result = MockSoapResultRuby19.new
+    mock_soap_result.m_return.stub!(:resultCode).and_return("0")
+    @client.stub!("refund").and_return(mock_soap_result)
+    result = api.refund(1234567, 23456, 100, "extra")
+    result.resultCode.should == 0
+  end
+
 end
 
 describe DebitechSoap::API, "calling a method with hash-style arguments" do
@@ -141,6 +164,15 @@ describe DebitechSoap::API, "calling a method with hash-style arguments" do
     mock_soap_result.return.stub!(:resultText).and_return("success")
     @client.stub!("refund").and_return(mock_soap_result)
     api.refund(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra").getResultText.should == "success"
+  end
+
+  it "should work with Ruby 1.9 SOAP API" do
+    api = DebitechSoap::API.new
+    mock_soap_result = MockSoapResultRuby19.new
+    mock_soap_result.m_return.stub!(:resultText).and_return("success")
+    @client.stub!("refund").and_return(mock_soap_result)
+    result = api.refund(:verifyID => 1234567, :transID => 23456, :amount => 100, :extra => "extra")
+    result.getResultText.should == "success"
   end
 
 end
