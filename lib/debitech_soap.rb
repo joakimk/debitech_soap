@@ -1,6 +1,5 @@
 require 'soap/wsdlDriver'
 require 'ostruct'
-require 'rubygems'
 require 'debitech_soap/string_extensions'
 
 module DebitechSoap
@@ -42,11 +41,18 @@ module DebitechSoap
 
     def valid_credentials?
       disable_stderr do
-        @client.checkSwedishPersNo(@api_credentials.merge({ :persNo => "555555-5555" })).return == "true"
+        return_value(@client.checkSwedishPersNo(@api_credentials.merge({ :persNo => "555555-5555" }))) == "true"
       end
     end
 
   private
+
+    # We use mumboe-soap4r for Ruby 1.9 compatibility, but if you use this library in 1.8 without using that lib
+    # (e.g. without bundle exec) then you might get the standard library SOAP lib instead.
+    # The standard library SOAP lib uses "return" here, and mumboe-soap4r uses "m_return".
+    def return_value(object)
+      object.respond_to?(:m_return) ? object.m_return : object.return
+    end
 
     def define_java_wrapper_methods!
       PARAMS.keys.flatten.each { |method|
@@ -63,7 +69,7 @@ module DebitechSoap
               }
             end
 
-            return_data @client.send(api_signature(method).first.first, attributes).return
+            return_data return_value(@client.send(api_signature(method).first.first, attributes))
           end                                                             # end
         end
       }

@@ -56,11 +56,4 @@ Get DIBSServerManual.pdf from the DIBS Manager.
 CI
 ----
 
-- DebitechSoap is continuously tested for compability with Ruby 1.8.7 and JRuby 1.6.2.
-
-
-Known issues
-----
-
-- Does not work with Ruby 1.9 (does not have "soap/wsdlDriver"). We have not been able to get "savon" to work.
-
+- DebitechSoap is continuously tested for compability with Ruby 1.9.3 (preview 1), Ruby 1.8.7 and JRuby 1.6.2.
