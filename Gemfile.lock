@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     debitech_soap (0.0.3)
-      rake
+      mumboe-soap4r (~> 1.5.8.4)
 
 GEM
   remote: http://rubygems.org/
@@ -12,6 +12,9 @@ GEM
       thor (~> 0.14.6)
     guard-rspec (0.5.0)
       guard (>= 0.8.4)
+    httpclient (2.2.2)
+    mumboe-soap4r (1.5.8.4)
+      httpclient (>= 2.1.1)
     rake (0.9.2)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
@@ -30,4 +33,5 @@ DEPENDENCIES
   debitech_soap!
   guard
   guard-rspec
+  rake
   rspec

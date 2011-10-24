@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = %q{A pure ruby way to make payments with DebiTech}
   s.description = %q{An implementation of the DebiTech Java API using pure ruby and the SOAP API.}
 
+  s.add_dependency "mumboe-soap4r", "~> 1.5.8.4"
+
   s.add_development_dependency "rake"
   s.add_development_dependency 'rspec'
   s.add_development_dependency "guard"
