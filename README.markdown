@@ -56,4 +56,4 @@ Get DIBSServerManual.pdf from the DIBS Manager.
 CI
 ----
 
-- DebitechSoap is continuously tested for compability with Ruby 1.8.7 and JRuby 1.6.2.
+- DebitechSoap is continuously tested for compability with Ruby 1.9.3 (preview 1), Ruby 1.8.7 and JRuby 1.6.2.
