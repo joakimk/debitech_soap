@@ -1,3 +1,7 @@
+0.0.4
+
+Ruby 1.9 compability. Support for both the standard library soap implementation and soap4r.
+
 0.0.3
 
 Added support for Java style method names.
