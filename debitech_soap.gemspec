@@ -6,15 +6,16 @@ Gem::Specification.new do |s|
   s.name        = "debitech_soap"
   s.version     = DebitechSoap::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Joakim Kolsjö", 'Niklas Holmgren']
-  s.email       = ["joakim.kolsjo@gmail.com", 'niklas.holmgren@bukowskis.com']
+  s.authors     = ["Joakim Kolsjö", 'Niklas Holmgren', 'Henrik Nyh']
+  s.email       = ["joakim.kolsjo@gmail.com", 'niklas.holmgren@bukowskis.com', 'henrik@barsoom.se']
   s.homepage    = "http://github.com/joakimk/debitech_soap"
   s.summary     = %q{A pure ruby way to make payments with DebiTech}
   s.description = %q{An implementation of the DebiTech Java API using pure ruby and the SOAP API.}
 
   s.add_dependency "rake"
   s.add_development_dependency 'rspec'
-  s.add_development_dependency 'autotest'
+  s.add_development_dependency "guard"
+  s.add_development_dependency "guard-rspec"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
