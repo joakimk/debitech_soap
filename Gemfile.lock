@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    debitech_soap (0.0.3)
+    debitech_soap (0.0.4)
       mumboe-soap4r (~> 1.5.8.4)
 
 GEM
