@@ -67,10 +67,15 @@ module DebitechSoap
               args.each_with_index { |argument, i|
                 attributes[parameter_order[i].to_sym] = argument
               }
+            end            
+            begin
+              client_result = return_value(@client.send(api_signature(method).first.first, attributes))
+            rescue Timeout::Error
+              client_result = OpenStruct.new(:resultCode => 403, :resultText => "SOAP Timeout")
+              return return_data(client_result)
             end
-
-            return_data return_value(@client.send(api_signature(method).first.first, attributes))
-          end                                                             # end
+            return_data(client_result)
+          end
         end
       }
     end
@@ -88,7 +93,6 @@ module DebitechSoap
           hash[attribute.underscore] = result
         end
       }
-
       OpenStruct.new(hash)
     end
 
