@@ -1,6 +1,5 @@
 require 'soap/wsdlDriver'
 require 'ostruct'
-require 'rubygems'
 require 'debitech_soap/string_extensions'
 
 module DebitechSoap
