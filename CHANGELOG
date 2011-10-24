@@ -1,3 +1,7 @@
+0.0.5
+
+Added timeout handling. Timeouts now return 403 so that you can retry.
+
 0.0.4
 
 Ruby 1.9 compability. Support for both the standard library soap implementation and soap4r.

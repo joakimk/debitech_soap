@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "debitech_soap"
   s.version     = DebitechSoap::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Joakim Kolsjö", 'Niklas Holmgren', 'Henrik Nyh']
+  s.authors     = ["Joakim Kolsjö", 'Niklas Holmgren', 'Henrik Nyh', 'Daniel Eriksson']
   s.email       = ["joakim.kolsjo@gmail.com", 'niklas.holmgren@bukowskis.com', 'henrik@barsoom.se']
   s.homepage    = "http://github.com/joakimk/debitech_soap"
   s.summary     = %q{A pure ruby way to make payments with DebiTech}
