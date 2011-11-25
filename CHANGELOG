@@ -1,3 +1,7 @@
+0.0.6
+
+Using a local WSDL to avoid potential issues with downloading it each time the library is used.
+
 0.0.5
 
 Added timeout handling. Timeouts now return 403 so that you can retry.
