@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="https://secure.incab.se/DTServerModuleService/v1" xmlns:ns1="https://secure.incab.se/DTServerModuleService/v1" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation>DTServerModuleService_v1</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="https://secure.incab.se/DTServerModuleService/v1" xmlns:ns="https://secure.incab.se/DTServerModuleService/v1">
+            <xs:complexType name="ReturnData">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="aCSUrl" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerAddress" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerAuthCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerAuthResponseCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerCity" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerConsumerLimit" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerErrorDescription" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerFirstName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerLastName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerMerchantLimit" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="acquirerZipCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="amount" type="xs:long"/>
+                    <xs:element minOccurs="0" name="errorMsg" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="infoCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="infoDescription" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="pAReqMsg" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="resultCode" type="xs:int"/>
+                    <xs:element minOccurs="0" name="resultText" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="verifyID" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>            
+            <xs:element name="checkSwedishPersNo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="persNo" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="checkSwedishPersNoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="accountTransactionAuthorize">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingFirstName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingLastName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingAddress" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCity" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCountry" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="bankCode" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="accountCode" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="eMail" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="method" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="accountTransactionAuthorizeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="askIf3DSEnrolled">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingFirstName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingLastName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingAddress" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCity" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCountry" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="cc" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expM" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expY" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="eMail" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="httpAcceptHeader" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="httpUserAgentHeader" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="method" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="askIf3DSEnrolledResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authReversal">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="amount" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authReversalResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorize">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingFirstName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingLastName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingAddress" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCity" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCountry" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="cc" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expM" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expY" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="eMail" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="method" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorizeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorize3DS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="paRes" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorize3DSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorizeAndSettle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingFirstName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingLastName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingAddress" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCity" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCountry" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="cc" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expM" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expY" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="eMail" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="method" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorizeAndSettleResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorizeAndSettle3DS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="paRes" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="authorizeAndSettle3DSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="customerCheck">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingFirstName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingLastName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingAddress" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingZipCode" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCity" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCountry" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="eMail" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="method" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="customerCheckResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eInvoice">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eInvoiceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="fundsTransfer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingFirstName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingLastName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingAddress" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCity" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCountry" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="cc" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expM" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="expY" type="xs:int"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="eMail" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="method" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="fundsTransferResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invoice">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingFirstName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingLastName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingAddress" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingZipCode" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCity" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billingCountry" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="eMail" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="persNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="method" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="invoiceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="refund">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="amount" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="refundResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="settle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="amount" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="settleResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subscribe">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subscribeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subscribeAndSettle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="shopName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="password" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="verifyID" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="data" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="ip" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="currency" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="extra" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subscribeAndSettleResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ReturnData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="settleRequest">
+    <wsdl:part name="parameters" element="ns1:settle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorizeRequest">
+    <wsdl:part name="parameters" element="ns1:authorize">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribeAndSettleResponse">
+    <wsdl:part name="parameters" element="ns1:subscribeAndSettleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="askIf3DSEnrolledRequest">
+    <wsdl:part name="parameters" element="ns1:askIf3DSEnrolled">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorizeAndSettle3DSRequest">
+    <wsdl:part name="parameters" element="ns1:authorizeAndSettle3DS">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authReversalResponse">
+    <wsdl:part name="parameters" element="ns1:authReversalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSwedishPersNoRequest">
+    <wsdl:part name="parameters" element="ns1:checkSwedishPersNo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="accountTransactionAuthorizeRequest">
+    <wsdl:part name="parameters" element="ns1:accountTransactionAuthorize">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribeResponse">
+    <wsdl:part name="parameters" element="ns1:subscribeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorizeResponse">
+    <wsdl:part name="parameters" element="ns1:authorizeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="invoiceRequest">
+    <wsdl:part name="parameters" element="ns1:invoice">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fundsTransferRequest">
+    <wsdl:part name="parameters" element="ns1:fundsTransfer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorize3DSResponse">
+    <wsdl:part name="parameters" element="ns1:authorize3DSResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="customerCheckResponse">
+    <wsdl:part name="parameters" element="ns1:customerCheckResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="settleResponse">
+    <wsdl:part name="parameters" element="ns1:settleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorizeAndSettle3DSResponse">
+    <wsdl:part name="parameters" element="ns1:authorizeAndSettle3DSResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="accountTransactionAuthorizeResponse">
+    <wsdl:part name="parameters" element="ns1:accountTransactionAuthorizeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorize3DSRequest">
+    <wsdl:part name="parameters" element="ns1:authorize3DS">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="customerCheckRequest">
+    <wsdl:part name="parameters" element="ns1:customerCheck">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eInvoiceResponse">
+    <wsdl:part name="parameters" element="ns1:eInvoiceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="askIf3DSEnrolledResponse">
+    <wsdl:part name="parameters" element="ns1:askIf3DSEnrolledResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refundResponse">
+    <wsdl:part name="parameters" element="ns1:refundResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fundsTransferResponse">
+    <wsdl:part name="parameters" element="ns1:fundsTransferResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authReversalRequest">
+    <wsdl:part name="parameters" element="ns1:authReversal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorizeAndSettleRequest">
+    <wsdl:part name="parameters" element="ns1:authorizeAndSettle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authorizeAndSettleResponse">
+    <wsdl:part name="parameters" element="ns1:authorizeAndSettleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refundRequest">
+    <wsdl:part name="parameters" element="ns1:refund">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSwedishPersNoResponse">
+    <wsdl:part name="parameters" element="ns1:checkSwedishPersNoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="invoiceResponse">
+    <wsdl:part name="parameters" element="ns1:invoiceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribeRequest">
+    <wsdl:part name="parameters" element="ns1:subscribe">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eInvoiceRequest">
+    <wsdl:part name="parameters" element="ns1:eInvoice">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscribeAndSettleRequest">
+    <wsdl:part name="parameters" element="ns1:subscribeAndSettle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DTServerModuleService_v1PortType">
+    <wsdl:operation name="authReversal">
+      <wsdl:input message="ns1:authReversalRequest" wsaw:Action="urn:authReversal">
+    </wsdl:input>
+      <wsdl:output message="ns1:authReversalResponse" wsaw:Action="urn:authReversalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSwedishPersNo">
+      <wsdl:input message="ns1:checkSwedishPersNoRequest" wsaw:Action="urn:checkSwedishPersNo">
+    </wsdl:input>
+      <wsdl:output message="ns1:checkSwedishPersNoResponse" wsaw:Action="urn:checkSwedishPersNoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fundsTransfer">
+      <wsdl:input message="ns1:fundsTransferRequest" wsaw:Action="urn:fundsTransfer">
+    </wsdl:input>
+      <wsdl:output message="ns1:fundsTransferResponse" wsaw:Action="urn:fundsTransferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="invoice">
+      <wsdl:input message="ns1:invoiceRequest" wsaw:Action="urn:invoice">
+    </wsdl:input>
+      <wsdl:output message="ns1:invoiceResponse" wsaw:Action="urn:invoiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="customerCheck">
+      <wsdl:input message="ns1:customerCheckRequest" wsaw:Action="urn:customerCheck">
+    </wsdl:input>
+      <wsdl:output message="ns1:customerCheckResponse" wsaw:Action="urn:customerCheckResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle3DS">
+      <wsdl:input message="ns1:authorizeAndSettle3DSRequest" wsaw:Action="urn:authorizeAndSettle3DS">
+    </wsdl:input>
+      <wsdl:output message="ns1:authorizeAndSettle3DSResponse" wsaw:Action="urn:authorizeAndSettle3DSResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accountTransactionAuthorize">
+      <wsdl:input message="ns1:accountTransactionAuthorizeRequest" wsaw:Action="urn:accountTransactionAuthorize">
+    </wsdl:input>
+      <wsdl:output message="ns1:accountTransactionAuthorizeResponse" wsaw:Action="urn:accountTransactionAuthorizeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize3DS">
+      <wsdl:input message="ns1:authorize3DSRequest" wsaw:Action="urn:authorize3DS">
+    </wsdl:input>
+      <wsdl:output message="ns1:authorize3DSResponse" wsaw:Action="urn:authorize3DSResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribeAndSettle">
+      <wsdl:input message="ns1:subscribeAndSettleRequest" wsaw:Action="urn:subscribeAndSettle">
+    </wsdl:input>
+      <wsdl:output message="ns1:subscribeAndSettleResponse" wsaw:Action="urn:subscribeAndSettleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize">
+      <wsdl:input message="ns1:authorizeRequest" wsaw:Action="urn:authorize">
+    </wsdl:input>
+      <wsdl:output message="ns1:authorizeResponse" wsaw:Action="urn:authorizeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eInvoice">
+      <wsdl:input message="ns1:eInvoiceRequest" wsaw:Action="urn:eInvoice">
+    </wsdl:input>
+      <wsdl:output message="ns1:eInvoiceResponse" wsaw:Action="urn:eInvoiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribe">
+      <wsdl:input message="ns1:subscribeRequest" wsaw:Action="urn:subscribe">
+    </wsdl:input>
+      <wsdl:output message="ns1:subscribeResponse" wsaw:Action="urn:subscribeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="askIf3DSEnrolled">
+      <wsdl:input message="ns1:askIf3DSEnrolledRequest" wsaw:Action="urn:askIf3DSEnrolled">
+    </wsdl:input>
+      <wsdl:output message="ns1:askIf3DSEnrolledResponse" wsaw:Action="urn:askIf3DSEnrolledResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle">
+      <wsdl:input message="ns1:authorizeAndSettleRequest" wsaw:Action="urn:authorizeAndSettle">
+    </wsdl:input>
+      <wsdl:output message="ns1:authorizeAndSettleResponse" wsaw:Action="urn:authorizeAndSettleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refund">
+      <wsdl:input message="ns1:refundRequest" wsaw:Action="urn:refund">
+    </wsdl:input>
+      <wsdl:output message="ns1:refundResponse" wsaw:Action="urn:refundResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="settle">
+      <wsdl:input message="ns1:settleRequest" wsaw:Action="urn:settle">
+    </wsdl:input>
+      <wsdl:output message="ns1:settleResponse" wsaw:Action="urn:settleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DTServerModuleService_v1HttpBinding" type="ns1:DTServerModuleService_v1PortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="authReversal">
+      <http:operation location="DTServerModuleService_v1/authReversal"/>
+      <wsdl:input>
+        <mime:content part="authReversal" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="authReversal" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSwedishPersNo">
+      <http:operation location="DTServerModuleService_v1/checkSwedishPersNo"/>
+      <wsdl:input>
+        <mime:content part="checkSwedishPersNo" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="checkSwedishPersNo" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fundsTransfer">
+      <http:operation location="DTServerModuleService_v1/fundsTransfer"/>
+      <wsdl:input>
+        <mime:content part="fundsTransfer" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="fundsTransfer" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="invoice">
+      <http:operation location="DTServerModuleService_v1/invoice"/>
+      <wsdl:input>
+        <mime:content part="invoice" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="invoice" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="customerCheck">
+      <http:operation location="DTServerModuleService_v1/customerCheck"/>
+      <wsdl:input>
+        <mime:content part="customerCheck" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="customerCheck" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle3DS">
+      <http:operation location="DTServerModuleService_v1/authorizeAndSettle3DS"/>
+      <wsdl:input>
+        <mime:content part="authorizeAndSettle3DS" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="authorizeAndSettle3DS" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accountTransactionAuthorize">
+      <http:operation location="DTServerModuleService_v1/accountTransactionAuthorize"/>
+      <wsdl:input>
+        <mime:content part="accountTransactionAuthorize" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="accountTransactionAuthorize" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize3DS">
+      <http:operation location="DTServerModuleService_v1/authorize3DS"/>
+      <wsdl:input>
+        <mime:content part="authorize3DS" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="authorize3DS" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribeAndSettle">
+      <http:operation location="DTServerModuleService_v1/subscribeAndSettle"/>
+      <wsdl:input>
+        <mime:content part="subscribeAndSettle" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="subscribeAndSettle" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize">
+      <http:operation location="DTServerModuleService_v1/authorize"/>
+      <wsdl:input>
+        <mime:content part="authorize" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="authorize" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eInvoice">
+      <http:operation location="DTServerModuleService_v1/eInvoice"/>
+      <wsdl:input>
+        <mime:content part="eInvoice" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="eInvoice" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribe">
+      <http:operation location="DTServerModuleService_v1/subscribe"/>
+      <wsdl:input>
+        <mime:content part="subscribe" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="subscribe" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="askIf3DSEnrolled">
+      <http:operation location="DTServerModuleService_v1/askIf3DSEnrolled"/>
+      <wsdl:input>
+        <mime:content part="askIf3DSEnrolled" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="askIf3DSEnrolled" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle">
+      <http:operation location="DTServerModuleService_v1/authorizeAndSettle"/>
+      <wsdl:input>
+        <mime:content part="authorizeAndSettle" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="authorizeAndSettle" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refund">
+      <http:operation location="DTServerModuleService_v1/refund"/>
+      <wsdl:input>
+        <mime:content part="refund" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="refund" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="settle">
+      <http:operation location="DTServerModuleService_v1/settle"/>
+      <wsdl:input>
+        <mime:content part="settle" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="settle" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DTServerModuleService_v1SOAP11Binding" type="ns1:DTServerModuleService_v1PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="authReversal">
+      <soap:operation soapAction="urn:authReversal" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSwedishPersNo">
+      <soap:operation soapAction="urn:checkSwedishPersNo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fundsTransfer">
+      <soap:operation soapAction="urn:fundsTransfer" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="invoice">
+      <soap:operation soapAction="urn:invoice" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="customerCheck">
+      <soap:operation soapAction="urn:customerCheck" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle3DS">
+      <soap:operation soapAction="urn:authorizeAndSettle3DS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accountTransactionAuthorize">
+      <soap:operation soapAction="urn:accountTransactionAuthorize" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize3DS">
+      <soap:operation soapAction="urn:authorize3DS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribeAndSettle">
+      <soap:operation soapAction="urn:subscribeAndSettle" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize">
+      <soap:operation soapAction="urn:authorize" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eInvoice">
+      <soap:operation soapAction="urn:eInvoice" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribe">
+      <soap:operation soapAction="urn:subscribe" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="askIf3DSEnrolled">
+      <soap:operation soapAction="urn:askIf3DSEnrolled" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle">
+      <soap:operation soapAction="urn:authorizeAndSettle" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refund">
+      <soap:operation soapAction="urn:refund" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="settle">
+      <soap:operation soapAction="urn:settle" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DTServerModuleService_v1SOAP12Binding" type="ns1:DTServerModuleService_v1PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="authReversal">
+      <soap12:operation soapAction="urn:authReversal" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSwedishPersNo">
+      <soap12:operation soapAction="urn:checkSwedishPersNo" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fundsTransfer">
+      <soap12:operation soapAction="urn:fundsTransfer" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="invoice">
+      <soap12:operation soapAction="urn:invoice" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="customerCheck">
+      <soap12:operation soapAction="urn:customerCheck" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle3DS">
+      <soap12:operation soapAction="urn:authorizeAndSettle3DS" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="accountTransactionAuthorize">
+      <soap12:operation soapAction="urn:accountTransactionAuthorize" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize3DS">
+      <soap12:operation soapAction="urn:authorize3DS" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribeAndSettle">
+      <soap12:operation soapAction="urn:subscribeAndSettle" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorize">
+      <soap12:operation soapAction="urn:authorize" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eInvoice">
+      <soap12:operation soapAction="urn:eInvoice" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscribe">
+      <soap12:operation soapAction="urn:subscribe" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="askIf3DSEnrolled">
+      <soap12:operation soapAction="urn:askIf3DSEnrolled" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authorizeAndSettle">
+      <soap12:operation soapAction="urn:authorizeAndSettle" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refund">
+      <soap12:operation soapAction="urn:refund" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="settle">
+      <soap12:operation soapAction="urn:settle" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DTServerModuleService_v1">
+    <wsdl:port name="DTServerModuleService_v1SOAP12port" binding="ns1:DTServerModuleService_v1SOAP12Binding">
+      <soap12:address location="https://secure.incab.se/axis2/services/DTServerModuleService_v1"/>
+    </wsdl:port>
+    <wsdl:port name="DTServerModuleService_v1SOAP11port" binding="ns1:DTServerModuleService_v1SOAP11Binding">
+      <soap:address location="https://secure.incab.se/axis2/services/DTServerModuleService_v1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
