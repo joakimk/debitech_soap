@@ -1,4 +1,6 @@
+$stderr = File.open('/dev/null')
 require 'soap/wsdlDriver'
+$stderr = STDERR
 require 'ostruct'
 require 'debitech_soap/string_extensions'
 
