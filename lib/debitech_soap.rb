@@ -1,5 +1,6 @@
+require 'stringio'
 $previous_stderr = $stderr
-$stderr = File.open('/dev/null')
+$stderr = StringIO.new
 require 'soap/wsdlDriver'
 $stderr = $previous_stderr
 require 'ostruct'
