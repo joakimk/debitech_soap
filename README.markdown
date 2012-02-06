@@ -1,5 +1,7 @@
 This is a wrapper of the DebiTech SOAP API. It's intended to be API compatible with the DebiTech Java client but also supports a more developer friendly syntax :).
 
+If you're looking for a more complete solution, check the [debitech](https://github.com/barsoom/debitech) gem which uses this library for API access.
+
 Installing
 ----
 
