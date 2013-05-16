@@ -1,3 +1,6 @@
+[![Build Status](https://secure.travis-ci.org/joakimk/debitech_soap.png)](http://travis-ci.org/joakimk/debitech_soap)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/joakimk/debitech_soap)
+
 This is a wrapper of the DebiTech SOAP API. It's intended to be API compatible with the DebiTech Java client but also supports a more developer friendly syntax :).
 
 If you're looking for a more complete solution, check the [debitech](https://github.com/barsoom/debitech) gem which uses this library for API access.
