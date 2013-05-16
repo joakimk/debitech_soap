@@ -29,7 +29,7 @@ describe DebitechSoap::API, "valid_credentials?" do
 
   it "should call checkSwedishPersNo with the credentials and a valid swedish social security number" do
     @client.should_receive(:checkSwedishPersNo).with(:shopName => "merchant_name", :userName => "api_user_name",
-                                                     :password => "api_user_password", :persNo => "555555-5555").
+                                                     :password => "api_user_password", :persNo => "5555555555").
                                                      and_return(mock(Object, :return => "true"))
 
     api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
