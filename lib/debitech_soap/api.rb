@@ -45,7 +45,7 @@ module DebitechSoap
 
     def valid_credentials?
       disable_stderr do
-        return_value(@client.checkSwedishPersNo(@api_credentials.merge({ :persNo => "555555-5555" }))) == "true"
+        return_value(@client.checkSwedishPersNo(@api_credentials.merge({ :persNo => "5555555555" }))) == "true"
       end
     end
 
