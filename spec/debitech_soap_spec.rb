@@ -20,8 +20,16 @@ class MockSoapResultRuby19
   end
 end
 
+describe DebitechSoap::API do
+  # When it can't find the wsdl file it throws an error. We need to ensure
+  # it can find the file (fixed regression bug).
+  it "can be initialized" do
+    DebitechSoap::API.new
+  end
+end
+
 describe DebitechSoap::API, "valid_credentials?" do
-  
+
   before do
     @client = mock(Object)
     SOAP::WSDLDriverFactory.stub!(:new).and_return(mock(Object, :create_rpc_driver => @client))

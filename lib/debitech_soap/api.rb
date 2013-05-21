@@ -37,7 +37,7 @@ module DebitechSoap
       @api_credentials[:password] = opts[:password]
 
       disable_stderr do
-        @client = SOAP::WSDLDriverFactory.new(File.join(File.dirname(__FILE__), "service.wsdl")).create_rpc_driver
+        @client = SOAP::WSDLDriverFactory.new(File.join(File.dirname(__FILE__), "../service.wsdl")).create_rpc_driver
       end
 
       define_java_wrapper_methods!
