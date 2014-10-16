@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    debitech_soap (1.0.2)
+    debitech_soap (1.0.3)
       httpclient (>= 2.4.0)
       mumboe-soap4r (~> 1.5.8.4)
 
