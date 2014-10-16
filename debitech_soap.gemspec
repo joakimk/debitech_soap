@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{An implementation of the DebiTech Java API using pure ruby and the SOAP API.}
 
   # Earlier versions of HTTPClient may prefer SSLv3 as its ssl_version,
-  # but 2014-10-15 Debitech started having issues with SSLv3, returning
+  # but 2014-10-15 Debitech started having issues with SSLv3, sometimes returning
   # "sslv3 alert handshake failure"
   # Probably because of changes to counter the "Poodle" vulnerability.
   # See: https://gist.github.com/henrik/321bb53dc7c236a6f4a0
