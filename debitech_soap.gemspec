@@ -12,6 +12,13 @@ Gem::Specification.new do |s|
   s.summary     = %q{A pure ruby way to make payments with DebiTech}
   s.description = %q{An implementation of the DebiTech Java API using pure ruby and the SOAP API.}
 
+  # Earlier versions of HTTPClient may prefer SSLv3 as its ssl_version,
+  # but 2014-10-15 Debitech started having issues with SSLv3, returning
+  # "sslv3 alert handshake failure"
+  # Probably because of changes to counter the "Poodle" vulnerability.
+  # See: https://gist.github.com/henrik/321bb53dc7c236a6f4a0
+  s.add_dependency "httpclient", ">= 2.4.0"
+
   s.add_dependency "mumboe-soap4r", "~> 1.5.8.4"
 
   s.add_development_dependency "rake"
