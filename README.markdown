@@ -64,7 +64,7 @@ If you're a library developer, you may want to experiment with changing the set 
 
 You can do that by setting an environment variable:
 
-    DIBS_HTTPCLIENT_CIPHERS="ALL:!aNULL:!eNULL:!SSLv2"
+    DIBS_HTTPCLIENT_CIPHERS='ALL:!aNULL:!eNULL:!SSLv2'
 
 If nothing is set, it uses the default (`HTTPClient::SSLConfig::CIPHERS_DEFAULT`).
 
