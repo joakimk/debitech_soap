@@ -56,3 +56,16 @@ API docs
 ----
 
 Get DIBSServerManual.pdf from the DIBS Manager.
+
+Changing HTTPClient SSL ciphers
+----
+
+If you're a library developer, you may want to experiment with changing the set of HTTPClient SSL ciphers, e.g. if DIBS deprecates old ones.
+
+You can do that by setting an environment variable:
+
+    DIBS_HTTPCLIENT_CIPHERS="ALL:!aNULL:!eNULL:!SSLv2"
+
+If nothing is set, it uses the default (`HTTPClient::SSLConfig::CIPHERS_DEFAULT`).
+
+Once the experiments are concluded, you should move that configuration into the library instead, so each user of this library doesn't have to configure it.

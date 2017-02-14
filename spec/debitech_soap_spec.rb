@@ -201,3 +201,21 @@ describe DebitechSoap::API, "handling exceptions" do
   end
   
 end
+
+describe DebitechSoap::API, "overriding ciphers with ENV" do
+  around do |example|
+    old_env = ENV["DIBS_HTTPCLIENT_CIPHERS"]
+    ENV["DIBS_HTTPCLIENT_CIPHERS"] = "FOO"
+    example.run
+    ENV["DIBS_HTTPCLIENT_CIPHERS"] = old_env
+  end
+
+  it "changes the configured HTTPClient ciphers" do
+    api = DebitechSoap::API.new
+
+    httpclient = api.instance_variable_get("@client").streamhandler.client
+
+    httpclient.should be_instance_of HTTPClient
+    httpclient.ssl_config.ciphers.should == "FOO"
+  end
+end
