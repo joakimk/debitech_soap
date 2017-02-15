@@ -40,6 +40,14 @@ module DebitechSoap
         @client = SOAP::WSDLDriverFactory.new(File.join(File.dirname(__FILE__), "../service.wsdl")).create_rpc_driver
       end
 
+      # Enable changing supported ciphers, for deprecation situations like http://tech.dibspayment.com/nodeaddpage/listofapprovedciphersuites.
+      # This lets us easily experiment in development, and to do quick changes in production if we must.
+      dibs_httpclient_ciphers = ENV["DIBS_HTTPCLIENT_CIPHERS"]
+      if dibs_httpclient_ciphers
+        httpclient_instance = @client.streamhandler.client
+        httpclient_instance.ssl_config.ciphers = dibs_httpclient_ciphers
+      end
+
       define_java_wrapper_methods!
     end
 
