@@ -40,6 +40,9 @@ module DebitechSoap
         @client = SOAP::WSDLDriverFactory.new(File.join(File.dirname(__FILE__), "../service.wsdl")).create_rpc_driver
       end
 
+      # Uncomment this line if you want to see the request and response printed to STDERR.
+      #@client.wiredump_dev = STDERR
+
       # Enable changing supported ciphers, for deprecation situations like http://tech.dibspayment.com/nodeaddpage/listofapprovedciphersuites.
       # This lets us easily experiment in development, and to do quick changes in production if we must.
       dibs_httpclient_ciphers = ENV["DIBS_HTTPCLIENT_CIPHERS"]
