@@ -61,7 +61,6 @@ module DebitechSoap
         response_value = return_value(@client.refund(@api_credentials.merge({ :verifyID => -1, :amount => 0 })))
         result_text = response_value.resultText
 
-        # If the auth is wrong, we will instead get "336 web_service_login_failed"
         case result_text
         when "error_transID_or_verifyID"
           # The auth succeeded, but the refund (thankfully and intentionally) did not.
