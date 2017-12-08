@@ -35,23 +35,29 @@ describe DebitechSoap::API, "valid_credentials?" do
     SOAP::WSDLDriverFactory.stub!(:new).and_return(mock(Object, :create_rpc_driver => @client))
   end
 
-  it "should call checkSwedishPersNo with the credentials and a valid swedish social security number" do
-    @client.should_receive(:checkSwedishPersNo).with(:shopName => "merchant_name", :userName => "api_user_name",
-                                                     :password => "api_user_password", :persNo => "5555555555").
-                                                     and_return(mock(Object, :return => "true"))
+  it "should call 'refund' with the credentials and dummy values, returning true if we were authed but failed to refund" do
+    @client.should_receive(:refund).with(:shopName => "merchant_name", :userName => "api_user_name",
+                                                     :password => "api_user_password", :verifyID => -1, :amount => 0).
+                                                     and_return(mock(Object, :return => mock(Object, :resultText => "error_transID_or_verifyID")))
 
     api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
     api.valid_credentials?.should == true
   end
 
-  it "should return false if the service returns false" do
-    @client.stub!(:checkSwedishPersNo).and_return(mock(Object, :return => "false"))
+  it "should return false if the service returns an auth error" do
+    @client.stub!(:refund).and_return(mock(Object, :return => mock(Object, :resultText => "336 web_service_login_failed")))
     api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
     api.valid_credentials?.should == false
   end
 
+  it "raises if the service returns an unexpected result" do
+    @client.stub!(:refund).and_return(mock(Object, :return => mock(Object, :resultText => "let's have lunch")))
+    api = DebitechSoap::API.new(:merchant => "merchant_name", :username => "api_user_name", :password => "api_user_password")
+    expect { api.valid_credentials? }.to raise_error(%{Unexpected result text: "let's have lunch"})
+  end
+
   it "should work with Ruby 1.9 SOAP API" do
-    @client.stub!(:checkSwedishPersNo).and_return(mock(Object, :m_return => "true"))
+    @client.stub!(:refund).and_return(mock(Object, :m_return => mock(Object, :resultText => "error_transID_or_verifyID")))
     api = DebitechSoap::API.new
     api.valid_credentials?.should == true
   end

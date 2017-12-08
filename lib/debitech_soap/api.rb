@@ -56,7 +56,22 @@ module DebitechSoap
 
     def valid_credentials?
       disable_stderr do
-        return_value(@client.checkSwedishPersNo(@api_credentials.merge({ :persNo => "5555555555" }))) == "true"
+        # We make a "refund" request, but we make sure to set the amount to 0 and to enter a verify ID that will never match a real one.
+        # Previously, we'd confirm credentials with the safer checkSwedishPersNo call, but that seems broken now (always returns false).
+        response_value = return_value(@client.refund(@api_credentials.merge({ :verifyID => -1, :amount => 0 })))
+        result_text = response_value.resultText
+
+        # If the auth is wrong, we will instead get "336 web_service_login_failed"
+        case result_text
+        when "error_transID_or_verifyID"
+          # The auth succeeded, but the refund (thankfully and intentionally) did not.
+          true
+        when "336 web_service_login_failed"
+          # The auth is wrong.
+          false
+        else
+          raise "Unexpected result text: #{result_text.inspect}"
+        end
       end
     end
 
