@@ -1,3 +1,7 @@
+NOTE! Please use <https://github.com/barsoom/debitech_soap/> instead. It's maintained from there and the latest gem release is based on that code.
+
+----
+
 [![Build Status](https://secure.travis-ci.org/joakimk/debitech_soap.png)](http://travis-ci.org/joakimk/debitech_soap)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/joakimk/debitech_soap)
 
